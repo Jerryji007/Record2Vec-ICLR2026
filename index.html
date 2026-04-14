@@ -1,13 +1,251 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Record2Vec: ICLR 2026</title>
-    <link rel="stylesheet" href="static/css/style.css">
+  <meta charset="utf-8">
+  <meta name="description" content="Record2Vec: Portable Representations for Clinical Time Series Data Using LLMs">
+  <meta name="keywords" content="Clinical Machine Learning, Time Series, Large Language Models, EHR, Domain Generalization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Record2Vec: Portable Representations for Clinical Time Series Data Using LLMs</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png" type="image/x-icon"> 
+  <link rel="stylesheet" href="./static/css/custumize.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
 </head>
+
 <body>
-    <h1>Record2Vec: Portable Clinical Representations</h1>
-    <p>Dummy site is running! Deployment successful.</p>
-    <script src="static/js/main.js"></script>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Can We Generate Portable Representations for<br> Clinical Time Series Data Using LLMs?</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jerryji007.github.io">Zongliang Ji</a><sup>1,3</sup>,</span>
+            <span class="author-block">
+              <a href="https://yyyyyifei.github.io">Yifei Sun</a><sup>1,3</sup>,</span>
+            <span class="author-block">
+              <a href="https://research.sunnybrook.ca/researchers/andre-amaral/">Andre Amaral</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://goldenberglab.ca">Anna Goldenberg</a><sup>1,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.toronto.edu/~rahulgk/">Rahul G. Krishnan</a><sup>1,3</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> University of Toronto, Canada</span></br>
+            <span class="author-block"><sup>2</sup> Sunnybrook Health Sciences Centre, Canada</span></br>
+            <span class="author-block"><sup>3</sup> Vector Institute, Canada</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2603.23987" class="external-link button is-normal is-rounded is-dark" style="text-decoration: none;">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Jerryji007/Record2Vec-ICLR2026"
+                   class="external-link button is-normal is-rounded is-dark" style="text-decoration: none;" >
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>GitHub</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+
+          <div class="column has-text-centered">
+            &#9654 <b>Keywords: </b>
+              <div class="w3-tag w3-round w3-blue w3-border w3-border-white">Clinical Machine Learning</div>
+              <div class="w3-tag w3-round w3-blue w3-border w3-border-white">Time Series</div>
+              <div class="w3-tag w3-round w3-blue w3-border w3-border-white">LLMs</div>
+              <div class="w3-tag w3-round w3-blue w3-border w3-border-white">Electronic Health Records</div></br>
+            <div class="w3-bar w3-border w3-light-grey" style="height:10px; visibility:hidden;"></div>
+            &#9654 <b>Venue: </b>
+            <div class="w3-tag w3-round w3-dark-grey w3-border w3-border-white">
+              International Conference on Learning Representations (ICLR 2026)
+            </div>
+        </div><br></br>
+        <div class="w3-bar w3-border w3-light-grey"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title" style="text-indent: -0.35em;">TL;DR</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="content has-text-justified scroll-wrapper">
+        <p>This work proposes <strong>Record2Vec</strong>, a summarize-then-embed pipeline using frozen Large Language Models (LLMs) to map irregular ICU time series into concise, semantic natural language summaries. These summaries are then embedded into fixed-length vectors, creating highly <strong>portable patient representations</strong>. Evaluated across MIMIC-IV, HiRID, and PPICU datasets, Record2Vec matches in-distribution performance of state-of-the-art models while significantly reducing performance degradation under distribution shifts across different hospitals.</p>
+      </div><br>
+    </div>
+    <p id="title" class="has-text-centered"><img src="./static/images/fig1_motivation.png" style="width:80%; border: 1px solid #ddd;"/><br>
+      <i><b>Figure 1.</b> Motivation for Record2Vec. Traditional machine learning relies on numeric imputation grids that lose crucial clinical semantics and limit cross-site portability. On the other hand, while human doctors generate handoff notes that perfectly preserve clinical meaning, their time is scarce and documentation can be highly variable. LLMs occupy a sweet spot: they are accessible and can autonomously create handoff-style summaries that retain deep clinical semantics while providing standardized, highly portable inputs for downstream forecasting and classification models.</i>
+    </p><br>
+    <div class="w3-bar w3-border w3-light-grey"></div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title" style="text-indent: -0.35em;">Introduction</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="content has-text-justified scroll-wrapper">
+        
+        <p>Deploying clinical machine learning is slow and brittle. Teams build a model at Hospital A, tune features, and attempt deployment. However, moving the model to Hospital B introduces <strong>distribution, population, and incidence shifts</strong> due to differing lab measurement policies and disease prevalence. These shifts often degrade model performance, forcing engineers to undergo lengthy recalibration cycles.</p>
+        
+        <p>The status quo in healthcare treats the <i>model</i> as the object that must be transferred, often relying on data interoperability standards (like OMOP or FHIR) that standardize formats but don't guarantee predictive stability. We adopt a complementary thesis: <strong>portable input representations enable portable models</strong>. If heterogeneous electronic medical records can be mapped into a semantically aligned, site-agnostic interface, predictors will require substantially less site-specific adaptation.</p>
+
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title" style="text-indent: -0.35em;">Methodology</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="content has-text-justified scroll-wrapper">
+        <p>Clinicians already solve the interoperability problem naturally. During shift changes, physicians interpret heterogeneous measurements through <strong>narrative handoffs</strong> that foreground salient context while abstracting away local idiosyncrasies. Record2Vec mimics this process using language as an information transformation layer.</p>
+        
+        <p>Formally, let the irregular ICU record for a stay $i$ at site $s$ over a 48-hour window be denoted as $\mathcal{R}_{i}^{(s)}=\{(c,\{(t_{k},v_{k})\}_{k=1}^{K_{c}}):c\in\mathcal{C}^{(s)}\}$, which is a dictionary from clinical concepts $c$ to time-value pairs. Rather than forcing this irregular record into a rigid numerical grid, we apply a summarize-then-embed framework:</p>
+
+        <ul>
+            <li><strong>Summarization:</strong> A frozen LLM $g_{\phi}$ maps the irregular window and a prompt $\pi$ to a concise natural-language summary: <br>
+            <center>$text_{i}=g_{\phi}(\mathcal{R}_{i}^{(s)},\pi)$</center><br>
+            This normalizes units, resolves synonyms, and abstracts away site-specific coding artifacts into a common semantic space.</li>
+            <li><strong>Embedding:</strong> A frozen text encoder $h_{\psi}$ then maps that summary to a fixed-length vector: <br>
+            <center>$z_{i}=h_{\psi}(text_{i})\in\mathbb{R}^{d}$</center><br>
+            This standardizes the downstream interface, allowing any standard predictor $f_{\theta}$ to map inputs $z_i$ to task labels $y$ without architectural modification.</li>
+        </ul>
+        <br>
+        
+        <p id="Fig2" class="has-text-centered" style="font-style: italic;"><img src="./static/images/fig2_pipeline.png" style="width:100%; border: 1px solid #ddd;"/></br>
+          <b>Figure 2.</b> Methods to generate medical-record representations: imputation pipeline, self-supervised TS representation (TSDE), TS foundation model (TimesFM), and <strong>Record2Vec</strong> (LLM summary followed by text embedding).
+        </p>
+
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title" style="text-indent: -0.35em;">Experiments & Results</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="content has-text-justified scroll-wrapper">
+        <p>We rigorously evaluated Record2Vec across three large ICU cohorts (MIMIC-IV, HiRID, PPICU) on 15 tasks including forecasting, mortality prediction, length of stay, and drug/lab recommendations. Record2Vec achieves the strongest in-distribution results overall, winning 13 of 15 tasks and proving that language-mediated input yields robust utility without tailoring architectures to a specific site.</p><br>
+        
+        <h4 class="title is-5">1. Cross-Site Portability</h4>
+        <p>When evaluated across hospitals, grid imputations degrade sharply under shift, and several classification scores collapse toward chance. In contrast, Record2Vec heavily mitigates these performance drops, winning 10 out of 10 transfer columns (with two ties by TimesFM). By standardizing heterogeneous coding choices and sampling practices into a shared clinical language, Record2Vec strips site-specific artifacts and preserves signals crucial for mortality and treatment prediction.</p>
+        
+        <p id="Tab2" class="has-text-centered" style="font-style: italic;"><img src="./static/images/tab2_transfer.png" style="width: 100%; border: 1px solid #ddd;"/></br>
+          <b>Table 1.</b> Transfer Learning Results. Record2Vec maintains robust predictive power across varying ICU datasets without requiring end-to-end retraining.</p>
+        <br>
+
+        <h4 class="title is-5">2. Few-Shot Generalization</h4>
+        <p>Hospitals outside of large medical centers often lack sufficient patient data to train high-performing models from scratch. Because the generated representations are already semantically aligned, Record2Vec requires drastically fewer samples to achieve generalization. We found that pre-training on HiRID or MIMIC and fine-tuning on as few as 16 randomly selected PPICU samples allows the adapted Record2Vec models to approach the in-distribution reference models trained on tens of thousands of samples.</p>
+
+        <p id="Fig5" class="has-text-centered" style="font-style: italic;"><img src="./static/images/fig5_fewshot.png" style="width: 100%; border: 1px solid #ddd;"/></br>
+          <b>Figure 3.</b> Few-shot finetuning with 16 labeled target samples for mortality prediction (RQ5) shown across six transfer settings. All tasks are reported the same metric as previous section: Forecast: masked mse, LOS: mae, Mortality: AUROC. The first row is the result of Hirid &rarr; Ppicu and the second row is Mimic &rarr; Ppicu. Reference lines: blue = best in-distribution upper bound, orange = best pre-finetune result, black = best finetuned baseline. Record2Vec surpassed baselines with a large gap, reaching comparable performance to in-distribution.</p>
+        <br>
+
+        <h4 class="title is-5">3. Privacy and Demographics</h4>
+        <p>A critical concern with portable representations is demographic data leakage. We found no evidence that Record2Vec increases demographic leakage risk. Gender prediction collapses to a constant baseline for all methods, and Record2Vec’s age error is similar to or higher than baselines. Because the frozen summarizer and text encoder emphasize clinical states, trends, and recent interventions, they do not amplify demographic signals beyond what is explicitly required, keeping demographic recoverability low while preserving clinical utility.</p>
+        
+        <p id="Fig6" class="has-text-centered" style="font-style: italic;"><img src="./static/images/fig6_privacy.png" style="width: 100%; border: 1px solid #ddd;"/></br>
+          <b>Figure 4.</b> In-distribution privacy prediction on Gender across three ICU datasets. Record2Vec achieves comparable or reduced privacy leakage compared to traditional imputation baselines.</p>
+
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title" style="text-indent: -0.35em;">Poster</h2>
+    <div class="columns is-centered has-text-centered">
+      <div class="content has-text-justified scroll-wrapper">
+        <p class="has-text-centered" style="font-style: italic;"><embed src="./static/images/ICLR2026-poster.pdf" width="980pt" height="545pt" type="application/pdf"></p>
+      </div>
+    </div>
+</section> 
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{ji2026record2vec,
+      title = {Can We Generate Portable Representations for Clinical Time Series Data Using LLMs?}, 
+      author = {Zongliang Ji and Yifei Sun and Andre Amaral and Anna Goldenberg and Rahul G. Krishnan},
+      booktitle = {International Conference on Learning Representations (ICLR)},
+      year = {2026},
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The template of this page is based on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> website.
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
